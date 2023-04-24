@@ -6,10 +6,12 @@ import models.dto.PersonDTO;
 import models.entity.Person.*;
 import models.entity.Person;
 import models.form.PersonForm;
+import org.springframework.stereotype.Service;
 import repos.PersonRepository;
 
 import java.util.List;
 
+@Service
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
