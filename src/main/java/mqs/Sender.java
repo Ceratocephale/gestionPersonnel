@@ -1,6 +1,7 @@
 package mqs;
 
 import models.dto.PersonDTO;
+import models.entity.Person;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class Sender {
         this.personTemplate = personTemplate;
     }
 
-    public void send(PersonDTO person) {
+    public void send(Person person) {
         this.personTemplate.convertAndSend("person", "", person);
     }
 }

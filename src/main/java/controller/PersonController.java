@@ -24,54 +24,57 @@ public class PersonController {
     }
 
     @GetMapping("/all")
-    public List<PersonDTO> getAll(){
-        List<PersonDTO> retour = service.getAll();
-
-        return retour;
+    public List<PersonDTO> getAll() {
+        return service.getAll().
+                stream()
+                .map(PersonDTO::from)
+                .toList();
     }
 
     @GetMapping("/all/a")
-    public List<PersonDTO> getAllAlphabetical(){
-        List<PersonDTO> retour = service.getAllAlphabetical();
+    public List<PersonDTO> getAllAlphabetical() {
 
-        return retour;
+        return service.getAllAlphabetical()
+                .stream()
+                .map(PersonDTO::from)
+                .toList();
     }
 
     @GetMapping("/all/s={status}")
-    public List<PersonDTO> getAllFromStatus(@PathVariable Status status){
-        List<PersonDTO> retour = service.getAllFromStatus(status);
+    public List<PersonDTO> getAllFromStatus(@PathVariable Status status) {
 
-        return retour;
+        return service.getAllFromStatus(status)
+                .stream()
+                .map(PersonDTO::from)
+                .toList();
     }
 
     @GetMapping("/{id:[0-9]+}")
-    public PersonDTO getOne(@PathVariable int id){
-        PersonDTO retour = service.getOne(id);
+    public PersonDTO getOne(@PathVariable int id) {
 
-        return retour;
+        return PersonDTO.from(service.getOne(id));
     }
 
     @DeleteMapping("/{id:[0-9]+}")
-    public PersonDTO delete(@PathVariable int id){
-        PersonDTO retour = service.delete(id);
-        sender.send(retour);
-
-        return retour;
+    public PersonDTO delete(@PathVariable int id) {
+        Person person = service.getOne(id);
+        sender.send(person);
+        return PersonDTO.from(person);
     }
 
     @PostMapping("/add")
-    public PersonDTO create(@RequestBody @Valid PersonForm form){
-        PersonDTO retour = service.add(form);
+    public PersonDTO create(@RequestBody @Valid PersonForm form) {
+        Person retour = service.add(form);
         sender.send(retour);
 
-        return retour;
+        return PersonDTO.from(retour);
     }
 
     @PatchMapping("/{id:[0-9]+}/update")
-    public PersonDTO update(@PathVariable int id, @RequestBody @Valid PersonForm form){
-        PersonDTO retour = service.update(id, form);
+    public PersonDTO update(@PathVariable int id, @RequestBody @Valid PersonForm form) {
+        Person retour = service.update(id, form);
         sender.send(retour);
 
-        return retour;
+        return PersonDTO.from(retour);
     }
 }

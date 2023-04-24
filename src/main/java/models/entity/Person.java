@@ -37,6 +37,9 @@ public class Person {
     @Column(name = "status", nullable = false)
     private Status status;
 
+    @Column(name = "active")
+    private boolean active;
+
     public enum Status {
         MAGASINIER,
         ADMINISTRATIF

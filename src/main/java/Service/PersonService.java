@@ -8,16 +8,16 @@ import models.form.PersonForm;
 import java.util.List;
 
 public interface PersonService {
-    List<PersonDTO> getAll();
+    List<Person> getAll();
 
-    PersonDTO getOne(int id);
+    Person getOne(int id);
 
-    PersonDTO delete(int id);
+    Person delete(int id);
 
-    PersonDTO add(PersonForm form);
+    Person add(PersonForm form);
 
-    List<PersonDTO> getAllFromStatus(Status status);
-    List<PersonDTO> getAllAlphabetical();
+    List<Person> getAllFromStatus(Status status);
+    List<Person> getAllAlphabetical();
 
-    PersonDTO update(int id, PersonForm form);
+    Person update(int id, PersonForm form);
 }

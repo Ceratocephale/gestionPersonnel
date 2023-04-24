@@ -2,7 +2,6 @@ package Service.impl;
 
 import Service.PersonService;
 import exception.NoPersonFoundException;
-import models.dto.PersonDTO;
 import models.entity.Person.*;
 import models.entity.Person;
 import models.form.PersonForm;
@@ -21,54 +20,43 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<PersonDTO> getAll() {
-       return personRepository.findAll().stream()
-               .map(PersonDTO::from)
-               .toList();
+    public List<Person> getAll() {
+       return personRepository.findAll();
     }
 
-    public PersonDTO getOne(int id){
-        return personRepository.findById(id)
-                .map(PersonDTO::from).orElseThrow(NoPersonFoundException::new);
+    public Person getOne(int id){
+        return personRepository.findById(id).orElseThrow(NoPersonFoundException::new);
     }
 
-    public PersonDTO delete(int id){
-        PersonDTO retour = getOne(id);
-        personRepository.deleteById(id);
-
-        return retour;
+    public Person delete(int id){
+        Person person = personRepository.findById(id).orElseThrow(NoPersonFoundException::new);
+        person.setActive(false);
+        return personRepository.save(person);
     }
 
-    public PersonDTO add(PersonForm form){
+    public Person add(PersonForm form){
         Person person = form.toEntity();
-
-        return PersonDTO.from(personRepository.save(person));
-
+        return personRepository.save(person);
     }
 
     @Override
-    public List<PersonDTO> getAllFromStatus(Status status) {
-        return personRepository.getAllFromStatus(status)
-                .stream()
-                .map(PersonDTO::from)
-                .toList();
+    public List<Person> getAllFromStatus(Status status) {
+        return personRepository.getAllFromStatus(status);
     }
 
     @Override
-    public List<PersonDTO> getAllAlphabetical() {
-        return personRepository.getAllAlphabetical()
-                .stream()
-                .map(PersonDTO::from)
-                .toList();
+    public List<Person> getAllAlphabetical() {
+        return personRepository.getAllAlphabetical();
     }
 
     @Override
-    public PersonDTO update(int id, PersonForm form) {
+    public Person update(int id, PersonForm form) {
         Person person = form.toEntity();
         person.setId(id);
-        delete(id);
-        return PersonDTO.from(personRepository.save(person));
-
+        personRepository.delete(personRepository.findById(id).orElseThrow(NoPersonFoundException::new));
+        return personRepository.save(person);
     }
+
+
 
 }
