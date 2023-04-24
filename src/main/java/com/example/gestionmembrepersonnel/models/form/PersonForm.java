@@ -1,8 +1,6 @@
-package models.form;
+package com.example.gestionmembrepersonnel.models.form;
 
-import jakarta.persistence.Column;
-import models.entity.Person;
-import models.entity.Person.*;
+import com.example.gestionmembrepersonnel.models.entity.Person;
 
 import java.time.LocalDate;
 
@@ -12,9 +10,9 @@ public class PersonForm {
     private String firstname;
     private LocalDate birthdate;
     private String address;
-    private Sex sex;
+    private Person.Sex sex;
     private String title;
-    private Status status;
+    private Person.Status status;
 
     public Person toEntity(){
         Person person = new Person();

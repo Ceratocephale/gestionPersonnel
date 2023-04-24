@@ -1,7 +1,6 @@
-package mqs;
+package com.example.gestionmembrepersonnel.mqs;
 
-import models.dto.PersonDTO;
-import models.entity.Person;
+import com.example.gestionmembrepersonnel.models.entity.Person;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,12 @@
-package Service.impl;
+package com.example.gestionmembrepersonnel.Service.impl;
 
-import Service.PersonService;
-import exception.NoPersonFoundException;
-import models.entity.Person.*;
-import models.entity.Person;
-import models.form.PersonForm;
+import com.example.gestionmembrepersonnel.Service.PersonService;
+import com.example.gestionmembrepersonnel.exception.NoPersonFoundException;
+import com.example.gestionmembrepersonnel.models.entity.Person;
+import com.example.gestionmembrepersonnel.models.entity.Person.*;
+import com.example.gestionmembrepersonnel.models.form.PersonForm;
+import com.example.gestionmembrepersonnel.repos.PersonRepository;
 import org.springframework.stereotype.Service;
-import repos.PersonRepository;
 
 import java.util.List;
 
@@ -41,12 +41,14 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> getAllFromStatus(Status status) {
-        return personRepository.getAllFromStatus(status);
+        List<Person> persons = getAll();
+        return persons.stream().filter(p->p.getStatus() == status).toList();
+
     }
 
     @Override
     public List<Person> getAllAlphabetical() {
-        return personRepository.getAllAlphabetical();
+        return personRepository.getAllInAlphabeticOrderFromFirstName();
     }
 
     @Override

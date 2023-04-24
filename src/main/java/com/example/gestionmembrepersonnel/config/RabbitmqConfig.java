@@ -1,4 +1,4 @@
-package config;
+package com.example.gestionmembrepersonnel.config;
 
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

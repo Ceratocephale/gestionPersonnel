@@ -1,9 +1,7 @@
-package Service;
+package com.example.gestionmembrepersonnel.Service;
 
-import models.dto.PersonDTO;
-import models.entity.Person;
-import models.entity.Person.*;
-import models.form.PersonForm;
+import com.example.gestionmembrepersonnel.models.entity.Person;
+import com.example.gestionmembrepersonnel.models.form.PersonForm;
 
 import java.util.List;
 
@@ -16,7 +14,7 @@ public interface PersonService {
 
     Person add(PersonForm form);
 
-    List<Person> getAllFromStatus(Status status);
+    List<Person> getAllFromStatus(Person.Status status);
     List<Person> getAllAlphabetical();
 
     Person update(int id, PersonForm form);

@@ -1,10 +1,9 @@
-package models.dto;
+package com.example.gestionmembrepersonnel.models.dto;
 
 
+import com.example.gestionmembrepersonnel.models.entity.Person;
 import lombok.Builder;
 import lombok.Data;
-import models.entity.Person;
-import models.entity.Person.*;
 
 import java.time.LocalDate;
 
@@ -16,9 +15,9 @@ public class PersonDTO {
     private String firstname;
     private LocalDate birthdate;
     private String address;
-    private Sex sex;
+    private Person.Sex sex;
     private String title;
-    private Status status;
+    private Person.Status status;
 
 
     public static PersonDTO from(Person entity){

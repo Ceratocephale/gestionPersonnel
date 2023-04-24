@@ -1,4 +1,4 @@
-package exception;
+package com.example.gestionmembrepersonnel.exception;
 
 public class NoPersonFoundException extends  RuntimeException{
     public NoPersonFoundException(Throwable cause) {

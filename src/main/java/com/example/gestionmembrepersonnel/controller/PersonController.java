@@ -1,12 +1,11 @@
-package controller;
+package com.example.gestionmembrepersonnel.controller;
 
-import Service.PersonService;
+import com.example.gestionmembrepersonnel.Service.PersonService;
+import com.example.gestionmembrepersonnel.models.dto.PersonDTO;
+import com.example.gestionmembrepersonnel.models.entity.Person;
 import jakarta.validation.Valid;
-import models.dto.PersonDTO;
-import models.entity.Person;
-import models.entity.Person.*;
-import models.form.PersonForm;
-import mqs.Sender;
+import com.example.gestionmembrepersonnel.models.form.PersonForm;
+import com.example.gestionmembrepersonnel.mqs.Sender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,7 +40,7 @@ public class PersonController {
     }
 
     @GetMapping("/all/s={status}")
-    public List<PersonDTO> getAllFromStatus(@PathVariable Status status) {
+    public List<PersonDTO> getAllFromStatus(@PathVariable Person.Status status) {
 
         return service.getAllFromStatus(status)
                 .stream()
