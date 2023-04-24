@@ -62,7 +62,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonDTO update(int id, PersonForm form) {
-        return null;
+        Person person = form.toEntity();
+        person.setId(id);
+        delete(id);
+        return PersonDTO.from(personRepository.save(person));
+
     }
 
 }
