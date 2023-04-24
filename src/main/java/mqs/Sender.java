@@ -14,6 +14,6 @@ public class Sender {
     }
 
     public void send(String person) {
-        this.userTemplate.convertAndSend("person", "", person);
+        this.personTemplate.convertAndSend("person", "", person);
     }
 }
