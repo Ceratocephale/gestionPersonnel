@@ -42,7 +42,7 @@ public class PersonController {
     @GetMapping("/all/s={status}")
     public List<PersonDTO> getAllFromStatus(@PathVariable Status status){
         List<PersonDTO> retour = service.getAllFromStatus(status);
-        sender.send("select all person in alphabetical order");
+        sender.send("select all person from a status");
 
         return retour;
     }
