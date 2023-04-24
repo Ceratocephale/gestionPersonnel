@@ -38,7 +38,7 @@ public class Person {
     private Status status;
 
     @Column(name = "active")
-    private boolean active;
+    private boolean active = true;
 
     public enum Status {
         MAGASINIER,
