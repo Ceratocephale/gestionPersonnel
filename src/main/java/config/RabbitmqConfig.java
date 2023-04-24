@@ -16,8 +16,8 @@ public class RabbitmqConfig {
     }
 
     @Bean
-    @Qualifier(value = "userRabbitTemplate")
-    public RabbitTemplate userRabbitTemplate(
+    @Qualifier(value = "personRabbitTemplate")
+    public RabbitTemplate personRabbitTemplate(
             Jackson2JsonMessageConverter converter,
             CachingConnectionFactory factory
     ) {

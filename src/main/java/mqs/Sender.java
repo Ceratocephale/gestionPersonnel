@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Sender {
-    private final RabbitTemplate userTemplate;
-    
+    private final RabbitTemplate personTemplate;
 
-    public Sender(@Qualifier("userRabbitTemplate") RabbitTemplate userTemplate) {
-        this.userTemplate = userTemplate;
+
+    public Sender(@Qualifier("personRabbitTemplate") RabbitTemplate personTemplate) {
+        this.personTemplate = personTemplate;
     }
 
-    public void send(String user) {
-        this.userTemplate.convertAndSend("user", "", user);
+    public void send(String person) {
+        this.userTemplate.convertAndSend("person", "", person);
     }
 }
