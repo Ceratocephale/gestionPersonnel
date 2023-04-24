@@ -26,7 +26,6 @@ public class PersonController {
     @GetMapping("/all")
     public List<PersonDTO> getAll(){
         List<PersonDTO> retour = service.getAll();
-        sender.send("select all person");
 
         return retour;
     }
@@ -34,7 +33,6 @@ public class PersonController {
     @GetMapping("/all/a")
     public List<PersonDTO> getAllAlphabetical(){
         List<PersonDTO> retour = service.getAllAlphabetical();
-        sender.send("select all person in alphabetical order");
 
         return retour;
     }
@@ -42,7 +40,6 @@ public class PersonController {
     @GetMapping("/all/s={status}")
     public List<PersonDTO> getAllFromStatus(@PathVariable Status status){
         List<PersonDTO> retour = service.getAllFromStatus(status);
-        sender.send("select all person from a status");
 
         return retour;
     }
@@ -50,7 +47,6 @@ public class PersonController {
     @GetMapping("/{id:[0-9]+}")
     public PersonDTO getOne(@PathVariable int id){
         PersonDTO retour = service.getOne(id);
-        sender.send("selected person id " + id);
 
         return retour;
     }
@@ -58,7 +54,7 @@ public class PersonController {
     @DeleteMapping("/{id:[0-9]+}")
     public PersonDTO delete(@PathVariable int id){
         PersonDTO retour = service.delete(id);
-        sender.send("deleted person id " + id);
+        sender.send(retour);
 
         return retour;
     }
@@ -66,7 +62,7 @@ public class PersonController {
     @PostMapping("/add")
     public PersonDTO create(@RequestBody @Valid PersonForm form){
         PersonDTO retour = service.add(form);
-        sender.send("created person");
+        sender.send(retour);
 
         return retour;
     }
@@ -74,7 +70,7 @@ public class PersonController {
     @PatchMapping("/{id:[0-9]+}/update")
     public PersonDTO update(@PathVariable int id, @RequestBody @Valid PersonForm form){
         PersonDTO retour = service.update(id, form);
-        sender.send("updated person");
+        sender.send(retour);
 
         return retour;
     }
