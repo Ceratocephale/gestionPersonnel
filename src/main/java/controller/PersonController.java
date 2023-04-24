@@ -72,7 +72,7 @@ public class PersonController {
     }
 
     @PatchMapping("/{id:[0-9]+}/update")
-    public PersonDTO update(@RequestParam int id, @RequestBody @Valid PersonForm form){
+    public PersonDTO update(@PathVariable int id, @RequestBody @Valid PersonForm form){
         PersonDTO retour = service.update(id, form);
         sender.send("updated person");
 
